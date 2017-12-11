@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HomeWork 07.12</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="skeleton.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <form>
+        <div class="row" id="noChief">
+            <h1>У нас пока нет директора.<br />Может вы хотите им стать?</h1>
+            <div>
+                <input type="text" id="chiefName" placeholder="Введите имя">
+                <input type="text" id="chiefSurname" placeholder="Введите фамилию">
+                <input type="number" id="chiefRate" placeholder="Оплата в день">
+                <input type="number" id="chiefDays" placeholder="Рабочие дни за месяц">
+            </div>
+            <input type="button" class="button-primary" id="addChief" value="Добавить">
+        </div>
+    </form>
+
+    <form>
+        <h1 id="nameOfTheChief"></h1>
+        <div class="row" id="chiefBord">
+            <div class="three columns">
+                <h2>Добавьте нового работника:</h2>
+                <input type="text" id="workerName" placeholder="Введите имя">
+                <input type="text" id="workerSurname" placeholder="Введите фамилию">
+                <input type="number" id="workerRate" placeholder="Оплата в день">
+                <input type="number" id="workerDays" placeholder="Рабочие дни за месяц">
+                <div>
+                    <input type="button" class="button-primary" id="workerAdd" value="Добавить">
+                </div>
+            </div>
+            <div class="three columns">
+                <h2>Обновить работнику зарплату:</h2>
+                <input type="text" id="nameForUpdate" placeholder="Имя">
+                <input type="number" id="rateForUpdate" placeholder="Имя">
+                <input type="button" class="button-primary" id="workerRateUpdate" value="Обновить">
+            </div>
+            <div class="three columns">
+                <h2>Уволить работника:</h2>
+                <input type="text" id="nameForRemove" placeholder="Имя">
+                <input type="button" class="button-primary" id="workerRemove" value="Удалить">
+            </div>
+            <div class="three columns">
+                <h2>Получить все данные работника:</h2>
+                <input type="text" id="nameForWorkerInfo" placeholder="Имя">
+                <input type="button" class="button-primary" id="workerFullInfo" value="Получить">
+            </div>
+        </div>
+    </form>
+
+    <div id="result"></div>
+</div>
+
+<script src="lib.js"></script>
+</body>
+</html>
