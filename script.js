@@ -1,3 +1,4 @@
+// allOfWorkers = все работники, которые были добавлены, allOfChiefs - один директор
 let allOfWorkers = [],
     allOfChiefs = [];
 
@@ -30,12 +31,24 @@ class Chief extends Worker {
     }
 
     removeWorker(workerName) {
-        let i;
+        let i, workers = 0;
 
-        for (i = 0; i < allOfWorkers.length; i++) {
-            if (allOfWorkers[i].name === workerName) {
-                allOfWorkers.splice(i, 1);
+        document.getElementById('result').innerHTML = '';
+
+        if (allOfWorkers.length > 0) {
+
+            for (i = 0; i < allOfWorkers.length; i++) {
+                if (allOfWorkers[i].name === workerName) {
+                    allOfWorkers.splice(i, 1);
+                    workers++;
+                }
             }
+
+            if (workers === 0) {
+                document.getElementById('result').innerHTML = 'Нельзя уволить того, кого нет';
+            }
+        } else {
+            document.getElementById('result').innerHTML = 'У нас ещё нет работников!';
         }
     }
 
@@ -76,6 +89,9 @@ class Chief extends Worker {
     }
 }
 
+/*
+Функция для добавления нового директора. Новый директор добавляется в массив allOfChiefs
+ */
 function addChief () {
 
     let name, surname, rate, days, isChiefExists, chiefBord;
@@ -94,14 +110,32 @@ function addChief () {
     chiefBord.style.display = 'flex';
     document.getElementById('nameOfTheChief').innerHTML =
         'Привет, важный директор ' + allOfChiefs[0].name + ' ' + allOfChiefs[0].surname;
+}
 
+/*
+Функция для увольнения работника. Не полностью работает, пока не будут реализованы другие функции
+(в частности, добавления нового сотрудника)
+ */
+function removeWorker() {
+    let name;
+
+    name = document.getElementById('nameForRemove').value;
+
+    allOfChiefs[0].removeWorker(name);
 }
 
 document.getElementById('addChief').addEventListener("click", addChief);
+document.getElementById('workerRemove').addEventListener("click", removeWorker);
 
+/*
+Провверка на работоспособность:
 
+addChief('Nataliia', 'Lastivka', 1000, 24);
 
-/*let worker1 = new Worker("Дима", "Иванов", "1000", "10");
+allOfChiefs[0].setWorkerRate('Oleksii', 600);
+allOfChiefs[0].addWorker('Oleksii', 'Lyzun', 500, 31);
+
+let worker1 = new Worker("Дима", "Иванов", "1000", "10");
 worker1.getSalary();
 
 let worker2 = new Worker("Вася", "Петров", "2000", "20");
